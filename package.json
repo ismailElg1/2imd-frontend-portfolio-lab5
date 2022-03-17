@@ -1,28 +1,23 @@
 {
-  "name": "lab5---node",
-  "version": "0.0.0",
-  "private": true,
+  "name": "2imd-frontend-portfolio-lab5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "start:dev": "nodemon ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailElg1/2imd-frontend-portfolio-lab5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ismailElg1/2imd-frontend-portfolio-lab5/issues"
+  },
+  "homepage": "https://github.com/ismailElg1/2imd-frontend-portfolio-lab5#readme",
   "dependencies": {
-    "config": "^3.3.7",
-    "cookie-parser": "~1.4.4",
-    "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.2.7",
-    "morgan": "~1.9.1",
-    "passport": "^0.5.2",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^7.0.0",
-    "pug": "2.0.0-beta11"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
+    "express": "^4.17.3"
   }
 }
