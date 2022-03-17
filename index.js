@@ -18,17 +18,13 @@ app.get('/api/v1/messages', (req, res) =>{
 })
 
 app.post('/api/v1/messages', (req, res) => {
-    const schema = {
-        text: Joi.string().min(3).required()
-    }
-    const result = Joi.validate(req.body);
-    console.log(result);
-
-    if(!req.body.text || req.body.text.length<3){
+    const { error } = validateMessage(req.body);
+    if(error){
         //400 bad request
-        res.status(400).send('Text is required and should be minimum 3 characters');
+        res.status(400).send(error.details[0].message);
         return;
     }
+
     const message = {
         id: messages.length + 1,
         text: req.body.text,
@@ -41,16 +37,52 @@ app.get('/api/v1/messages/:id', (req, res) =>{
   const message = messages.find(c => c.id === parseInt(req.params.id));
   if(!message){
       res.status(404).send('The message with the given id was not found');
-  }
+      return;  
+    }
   else{
       res.send(message);
   }
 })
 
+app.put('/api/v1/messages/:id', (req, res) => {
+    const message = messages.find(c => c.id === parseInt(req.params.id));
+    if(!message){
+        res.status(404).send('The message with the given id was not found');
+        return;
+    }
+  
+    const { error } = validateMessage(req.body);
+    if(error){
+        //400 bad request
+        res.status(400).send(error.details[0].message);
+        return;
+    }
+
+    message.text = req.body.text;
+    res.send(message);
+});
+
+app.delete('/api/v1/messages/:id', (req, res) => {
+    const message = messages.find(c => c.id === parseInt(req.params.id));
+    if(!message){
+        res.status(404).send('The message with the given id was not found');
+        return;
+    }
+  
+    const index = messages.indexOf(message);
+    messages.splice(index, 1);
+
+    res.send(message);
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
 console.log(`Listening on port ${port}`);
 });
-// app.post();
-// app.put();
-// app.delete();
+
+function validateMessage(message){
+    const schema = {
+        text: Joi.string().min(3).required()
+    }
+    return Joi.validate(message, schema);
+}
