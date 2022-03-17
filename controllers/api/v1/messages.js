@@ -1,12 +1,12 @@
-const Todo = require('../../../models/Todo');
+const Message = require('../../../models/Message');
 
 const getAll = (req, res) => {
-    Todo.find({"user": req.user._id}, (err, doc) => {
+    Message.find({"user": req.user._id}, (err, doc) => {
         if(!err){
             res.json({
                 "status": "success",
                 "data": {
-                    "todos": doc
+                    "messages": doc
                 }
             });
         }
@@ -15,22 +15,22 @@ const getAll = (req, res) => {
 
 const create =  (req, res, next) => {
     
-    let todo = new Todo();
-    todo.text = req.body.text;
-    todo.user = req.user._id;
-    todo.completed = false;
-    todo.save((err, doc) => {
+    let message = new Message();
+    message.text = req.body.text;
+    message.user = req.user._id;
+    message.completed = false;
+    message.save((err, doc) => {
         if(err){
             res.json({
                 "status": "error",
-                "message": "Could not save this to do item",
+                "message": "Could not save this message",
             })
         }
         if(!err){
             res.json({
                 "status": "success",
                 "data":{
-                    "todo": doc
+                    "message": doc
                 }
             });
         }
@@ -40,10 +40,10 @@ const create =  (req, res, next) => {
 
 const update =  (req, res) => {
     let user = req.user._id;
-    let todoId = req.params.id;
-    Todo.findOneAndUpdate({
+    let messageId = req.params.id;
+    Message.findOneAndUpdate({
         user: user,
-        _id: todoId
+        _id: messageId
     }, {
         completed: true
     }, {new: true}
@@ -51,7 +51,7 @@ const update =  (req, res) => {
        res.json({
         "status": "success",
         "data": {
-            todo: doc
+            message: doc
         } 
        })
     }).catch(err => {
