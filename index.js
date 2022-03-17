@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const Joi = require('joi');
+const cors = require('cors');
 
-app.use(express.json());
+app.use(express.static("public"));
+
 
 const messages = [
     {id: 1, text: 'message 1'},
@@ -11,7 +13,7 @@ const messages = [
     {id: 3, text: 'message 4'},
     {id: 3, text: 'message 5'},
 ];
-app.get('/', (req, res) => {
+app.get('/', cors(), (req, res) => {
     res.send("hello world!")
 });
 
