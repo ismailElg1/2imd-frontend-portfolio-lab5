@@ -5,9 +5,11 @@ const Joi = require('joi');
 app.use(express.json());
 
 const messages = [
-    {id: 1, text: 'message1'},
-    {id: 2, text: 'message2'},
-    {id: 3, text: 'message3'}
+    {id: 1, text: 'message 1'},
+    {id: 2, text: 'message 2'},
+    {id: 3, text: 'message 3'},
+    {id: 3, text: 'message 4'},
+    {id: 3, text: 'message 5'},
 ];
 app.get('/', (req, res) => {
     res.send("hello world!")
