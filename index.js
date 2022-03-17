@@ -17,14 +17,13 @@ app.get('/api/v1/messages', (req, res) =>{
     res.send(messages);
 })
 
-app.post('/api/v1/messages/', (req, res) => {
+app.post('/api/v1/messages', (req, res) => {
     const schema = {
-        name: Joi.string().min(3).required(),
-
-    };
-    const result = Joi.validate(req.body, schema);
+        text: Joi.string().min(3).required()
+    }
+    const result = Joi.validate(req.body);
     console.log(result);
-    
+
     if(!req.body.text || req.body.text.length<3){
         //400 bad request
         res.status(400).send('Text is required and should be minimum 3 characters');

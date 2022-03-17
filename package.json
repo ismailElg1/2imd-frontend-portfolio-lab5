@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ismailElg1/2imd-frontend-portfolio-lab5#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "joi": "^13.1.0"
   }
 }
