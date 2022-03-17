@@ -1,0 +1,17 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: rgb(199, 255, 255);
+    font-size: 2em;
+    font-weight: bold;
+    font-family: sans-serif;
+}
