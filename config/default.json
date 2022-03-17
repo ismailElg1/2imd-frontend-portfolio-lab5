@@ -1,6 +1,6 @@
 {
     "Database":{
-        "conn": "mongodb://localhost:27017/todosapp"
+        "conn": "mongodb://localhost:27017/messagesapp"
     },
     "jwt":{
         "secret": "MyVerySecretWord"
