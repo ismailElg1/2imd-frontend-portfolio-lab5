@@ -1,0 +1,5 @@
+{
+    "Database": {
+        "conn": "mongodb+srv://apinodejs:NKulLsFmlFs4xPel@cluster0.kkvy1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    }
+}

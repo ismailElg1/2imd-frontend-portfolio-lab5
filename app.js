@@ -8,8 +8,10 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiMessagesRouter = require('./routes/api/v1/messages');
 
+const config = require('config');
+
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/messagesapp', { 
+mongoose.connect(config.get('Database.conn'), { 
   useNewUrlParser: true
 });
 
