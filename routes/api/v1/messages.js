@@ -6,6 +6,11 @@ router.get("/", messagesController.getAll);
 
 router.post("/", messagesController.create);
 
-// router.put("/:id", messagesController.create);
+router.get("/:id", messagesController.specific);
+
+router.put("/:id", messagesController.update);
+
+router.delete("/:id", messagesController.rem);
+
 
 module.exports = router;
