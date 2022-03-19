@@ -1,21 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const messagesController = require("../../../controllers/api/v1/messages");
 
+router.get('/', messagesController.getAll);
 
-router.get('/', (req, res) => {
-    res.send('get messages');
-});
+router.post('/', messagesController.create);
 
-router.post('/', (req, res) => {
-    res.send('post messages');
-});
+router.put('/:id', messagesController.update);
 
-router.put('/:id', (req, res) => {
-    res.send('put messages');
-});
-
-router.delete('/:id', (req, res) => {
-    res.send('delete messages ' + req.params.id);
-});
+router.delete('/:id', messagesController.remove);
 
 module.exports = router;
