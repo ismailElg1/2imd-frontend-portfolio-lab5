@@ -4,7 +4,8 @@ const messagesController = require('../../../controllers/api/v1/messages');
 
 router.get("/", messagesController.getAll);
 
-
 router.post("/", messagesController.create);
+
+// router.put("/:id", messagesController.create);
 
 module.exports = router;

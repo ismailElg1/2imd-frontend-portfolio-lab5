@@ -5,6 +5,7 @@ const getAll = (req, res) => {
         if(!err){
             res.json({
                 "status": "success",
+                "message": "GETTING messages",
                 "data": {
                     "messages": docs
                 }
@@ -17,8 +18,9 @@ const getAll = (req, res) => {
 
 const create = (req, res, next) => {
     let message = new Message();
-    message.text = "My first message";
-    message.user = "Bob";
+    message.text = req.body.text;
+    message.user = req.body.user;
+
     message.save((err, doc) => {
         if(err){
             res.json(({
