@@ -12,5 +12,6 @@ router.put("/:id", messagesController.update);
 
 router.delete("/:id", messagesController.rem);
 
+router.search("/?user", messagesController.rem);
 
 module.exports = router;
