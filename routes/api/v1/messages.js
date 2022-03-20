@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const messagesController = require('../../../controllers/api/v1/messages');
+const messagesController = require("../../../controllers/api/v1/messages");
 
 router.get("/", messagesController.getAll);
 
