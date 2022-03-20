@@ -34,7 +34,7 @@ const create = (req, res, next) => {
         if(err){
             res.json(({
                 "status": "error",
-                "message": "Could not save message"
+                "message": "Couldn't post the message"
             }))
         }
         if(!err){
@@ -51,18 +51,31 @@ const create = (req, res, next) => {
 const specific = async (req, res) => {
   
  try{
-    const message = await  Message.findById(req.params.id);
-    res.json(message);
+    const message = await Message.findById(req.params.id);
+    res.json({
+        "status": "success",
+        "message": "GETTING message with id "+req.params.id,
+        "data": {
+            "message": message
+        }
+    });
  }
  catch(err){
-     res.json({"message": err});
+     res.json(({
+        "status": "error",
+        "message": "Couldn't get message with id "+req.params.id,
+    }));
  }
 }
 
 const update = async (req, res) => {
     try{
        const updatedPost = await Message.updateOne({_id: req.params.messageId}, {$set: {text: req.body.text}});
-       res.json(updatedPost);
+       res.json(({
+        "status": "success",
+        "message": "UPDATING message with id "+req.params.id,
+    }));
+    
     }
     catch(err){
        res.json({message: err});
@@ -72,8 +85,11 @@ const update = async (req, res) => {
 
 const rem = async (req, res) => {
  try{
-    const removedMessage = await Message.remove({_id: req.params.messageId});
-    res.json(removedMessage);
+    const removedMessage = await Message.deleteOne({_id: req.params.messageId});
+    res.json(({
+        "status": "success",
+        "message": "DELETING message with id "+req.params.id,
+    }));
  }
  catch(err){
     res.json({message: err});
